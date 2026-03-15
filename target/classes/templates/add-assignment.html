@@ -1,75 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Add Assignment | BrainWave</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cyborg/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Add Assignment</title>
 </head>
-<body class="container mt-4">
+</header>
+<nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/features}">Features</a>
+        <a th:href="@{/assignments/new}">Add Assignment</a>
+        <a th:href="@{/assignments}">View Assignments</a>
+    </nav>
+</header>
+<body>
 
-    <header class="mb-4">
-        <nav class="nav nav-pills">
-            <a class="nav-link" th:href="@{/}">Home</a>
-            <a class="nav-link" th:href="@{/about}">About</a>
-            <a class="nav-link" th:href="@{/features}">Features</a>
-            <a class="nav-link active" th:href="@{/assignments/new}">Add Assignment</a>
-            <a class="nav-link" th:href="@{/assignments}">View Assignments</a>
-        </nav>
-    </header>
+<h1>Add Assignment</h1>
 
-    <main style="max-width: 600px; margin: auto;">
-        <h1 class="mb-4 text-center">Add Assignment</h1>
+<form th:action="@{/assignments}" th:object="${assignment}" method="post">
 
-        <form th:action="@{/assignments}" th:object="${assignment}" method="post" class="p-4 border rounded shadow-sm bg-dark text-black">
+<label>Title</label>
+<input type="text" th:field="*{title}">
+<br><br>
 
-            <div class="mb-3">
-                <label class="form-label fw-bold">Title</label>
-                <input type="text" th:field="*{title}" class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-            </div>
+<label>Course</label>
+<input type="text" th:field="*{courseName}">
+<br><br>
 
-            <div class="mb-3">
-                <label class="form-label fw-bold">Course</label>
-                <input type="text" th:field="*{courseName}" class="form-control" th:classappend="${#fields.hasErrors('courseName')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></div>
-            </div>
+<label>Due Date</label>
+<input type="date" th:field="*{dueDate}">
+<br><br>
 
-            <div class="mb-3">
-                <label class="form-label fw-bold">Due Date</label>
-                <input type="date" th:field="*{dueDate}" class="form-control" th:classappend="${#fields.hasErrors('dueDate')} ? 'is-invalid' : ''">
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></div>
-            </div>
+<label>Priority</label>
+<select th:field="*{priority}">
+<option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option>
+</select>
+<br><br>
 
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Priority</label>
-                    <select th:field="*{priority}" class="form-select" th:classappend="${#fields.hasErrors('priority')} ? 'is-invalid' : ''">
-                        <option value="" disabled selected>Select Priority</option>
-                        <option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option>
-                    </select>
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></div>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Status</label>
-                    <select th:field="*{status}" class="form-select" th:classappend="${#fields.hasErrors('status')} ? 'is-invalid' : ''">
-                        <option value="" disabled selected>Select Status</option>
-                        <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
-                    </select>
-                    <div class="invalid-feedback" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
-                </div>
-            </div>
+<label>Status</label>
+<select th:field="*{status}">
+<option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+</select>
+<br><br>
 
-            <div class="mb-4">
-                <label class="form-label fw-bold">Description</label>
-                <textarea th:field="*{description}" class="form-control" rows="3" th:classappend="${#fields.hasErrors('description')} ? 'is-invalid' : ''"></textarea>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
-            </div>
+<label>Description</label>
+<textarea th:field="*{description}"></textarea>
+<br><br>
 
-            <button type="submit" class="btn btn-primary w-100 fw-bold">Save Assignment</button>
+<button type="submit">Save Assignment</button>
 
-        </form>
-    </main>
+</form>
 
 </body>
 </html>
