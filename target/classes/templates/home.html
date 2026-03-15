@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BrainWave | Home</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1>BrainWave</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/features}">Features</a>
+        <a th:href="@{/assignments/new}">Add Assignment</a>
+        <a th:href="@{/assignments}">View Assignments</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>A Simpler Online Learning Experience</h2>
+        <p>
+            BrainWave is an online learning platform designed to make course navigation,
+            assignment tracking, and student progress easier to manage.
+        </p>
+        <p>
+            Our goal is to reduce the frustration students often experience with traditional
+            learning platforms by creating a cleaner and more intuitive system.
+        </p>
+    </section>
+
+    <section>
+        <h3>What you can do</h3>
+        <ul>
+            <li>Track assignments clearly</li>
+            <li>View course-related work in one place</li>
+            <li>Manage progress with less confusion</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>BrainWave - Online Learning Platform Project</p>
+</footer>
+</body>
+</html>

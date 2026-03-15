@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Assignments</title>
+</head>
+</header>
+<nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/features}">Features</a>
+        <a th:href="@{/assignments/new}">Add Assignment</a>
+        <a th:href="@{/assignments}">View Assignments</a>
+    </nav>
+</header>
+<body>
+
+<h1>Saved Assignments</h1>
+
+<table border="1">
+
+<tr>
+<th>Title</th>
+<th>Course</th>
+<th>Due Date</th>
+<th>Priority</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+
+<tr th:each="assignment : ${assignments}">
+
+<td th:text="${assignment.title}"></td>
+<td th:text="${assignment.courseName}"></td>
+<td th:text="${assignment.dueDate}"></td>
+<td th:text="${assignment.priority}"></td>
+<td th:text="${assignment.status}"></td>
+<td th:text="${assignment.description}"></td>
+
+</tr>
+
+</table>
+
+</body>
+</html>

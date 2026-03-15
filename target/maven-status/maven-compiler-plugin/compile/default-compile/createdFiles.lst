@@ -1,7 +1,7 @@
 com\brainwave\app\repository\AssignmentRepository.class
+com\brainwave\app\BrainWaveApplication.class
 com\brainwave\app\model\Priority.class
 com\brainwave\app\model\Assignment.class
-main\java\com\brainwave\app\BrainWaveApplication.class
 com\brainwave\app\model\Status.class
 com\brainwave\app\controller\PageController.class
 com\brainwave\app\controller\AssignmentController.class

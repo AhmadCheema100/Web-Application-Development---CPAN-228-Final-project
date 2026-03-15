@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Assignment</title>
+</head>
+</header>
+<nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/features}">Features</a>
+        <a th:href="@{/assignments/new}">Add Assignment</a>
+        <a th:href="@{/assignments}">View Assignments</a>
+    </nav>
+</header>
+<body>
+
+<h1>Add Assignment</h1>
+
+<form th:action="@{/assignments}" th:object="${assignment}" method="post">
+
+<label>Title</label>
+<input type="text" th:field="*{title}">
+<br><br>
+
+<label>Course</label>
+<input type="text" th:field="*{courseName}">
+<br><br>
+
+<label>Due Date</label>
+<input type="date" th:field="*{dueDate}">
+<br><br>
+
+<label>Priority</label>
+<select th:field="*{priority}">
+<option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option>
+</select>
+<br><br>
+
+<label>Status</label>
+<select th:field="*{status}">
+<option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+</select>
+<br><br>
+
+<label>Description</label>
+<textarea th:field="*{description}"></textarea>
+<br><br>
+
+<button type="submit">Save Assignment</button>
+
+</form>
+
+</body>
+</html>
