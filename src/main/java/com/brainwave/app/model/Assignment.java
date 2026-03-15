@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Assignment {
@@ -38,6 +39,9 @@ public class Assignment {
     @Size(max = 300, message = "Description must be 300 characters or less.")
     private String description;
 
+    @Column(updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
     public Assignment() {
     }
 
@@ -54,55 +58,63 @@ public class Assignment {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
+    public String getCourseName() {
+        return courseName;
+    }
+
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
+    public Priority getPriority() {
+        return priority;
+    }
+
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

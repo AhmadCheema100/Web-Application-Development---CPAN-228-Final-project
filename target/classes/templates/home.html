@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>BrainWave | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cyborg/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
-<header>
-    <h1>BrainWave</h1>
-    <nav>
-        <a th:href="@{/}">Home</a>
-        <a th:href="@{/about}">About</a>
-        <a th:href="@{/features}">Features</a>
-        <a th:href="@{/assignments/new}">Add Assignment</a>
-        <a th:href="@{/assignments}">View Assignments</a>
-    </nav>
-</header>
+<body class="container mt-4">
 
-<main>
-    <section>
-        <h2>A Simpler Online Learning Experience</h2>
-        <p>
-            BrainWave is an online learning platform designed to make course navigation,
-            assignment tracking, and student progress easier to manage.
-        </p>
-        <p>
-            Our goal is to reduce the frustration students often experience with traditional
-            learning platforms by creating a cleaner and more intuitive system.
-        </p>
-    </section>
+    <header class="mb-4">
+        <nav class="nav nav-pills">
+            <a class="nav-link active" th:href="@{/}">Home</a>
+            <a class="nav-link" th:href="@{/about}">About</a>
+            <a class="nav-link" th:href="@{/features}">Features</a>
+            <a class="nav-link" th:href="@{/assignments/new}">Add Assignment</a>
+            <a class="nav-link" th:href="@{/assignments}">View Assignments</a>
+        </nav>
+    </header>
 
-    <section>
-        <h3>What you can do</h3>
-        <ul>
-            <li>Track assignments clearly</li>
-            <li>View course-related work in one place</li>
-            <li>Manage progress with less confusion</li>
-        </ul>
-    </section>
-</main>
+    <main class="mt-5">
+        <div class="p-5 mb-4 bg-light rounded-3 border">
+            <div class="container-fluid py-1">
+                <h1 class="display-5 fw-bold mb-3">BrainWave</h1>
+                <p class="fs-4 text-muted">A Simpler Online Learning Experience</p>
+                <p>
+                    BrainWave is an online learning platform designed to make course navigation,
+                    assignment tracking, and student progress easier to manage.
+                </p>
+                <p>
+                    Our goal is to reduce the frustration students often experience with traditional
+                    learning platforms by creating a cleaner and more intuitive system.
+                </p>
+            </div>
+        </div>
 
-<footer>
-    <p>BrainWave - Online Learning Platform Project</p>
-</footer>
+        <section class="mb-5 px-3">
+            <h3 class="mb-3">What you can do</h3>
+            <ul class="list-group w-50">
+                <li class="list-group-item">Track assignments clearly</li>
+                <li class="list-group-item">View course related work in one place</li>
+                <li class="list-group-item">Manage progress with less confusion</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="mt-auto py-3 text-muted border-top">
+        <p>BrainWave Project</p>
+    </footer>
+
 </body>
 </html>
