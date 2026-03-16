@@ -26,37 +26,45 @@
 <form th:action="@{/assignments}" th:object="${assignment}" method="post">
 
 <div class="mb-3">
-<label class="form-label fw-bold">Title</label>
-<input type="text" class="form-control" th:field="*{title}">
+    <label class="form-label fw-bold">Title</label>
+    <input type="text" class="form-control" th:field="*{title}">
+    <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
 </div>
 
 <div class="mb-3">
-<label class="form-label fw-bold">Course</label>
-<input type="text" class="form-control" th:field="*{courseName}">
+    <label class="form-label fw-bold">Course</label>
+    <input type="text" class="form-control" th:field="*{courseName}">
+    <div class="text-danger" th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></div>
 </div>
 
 <div class="mb-3">
-<label class="form-label fw-bold">Due Date</label>
-<input type="date" class="form-control" th:field="*{dueDate}">
+    <label class="form-label fw-bold">Due Date</label>
+    <input type="date" class="form-control" th:field="*{dueDate}">
+    <div class="text-danger" th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></div>
 </div>
 
 <div class="mb-3">
-<label class="form-label fw-bold">Priority</label>
-<select class="form-select" th:field="*{priority}">
-<option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option>
-</select>
+    <label class="form-label fw-bold">Priority</label>
+    <select class="form-select" th:field="*{priority}">
+        <option value="">-- Select Priority --</option>
+        <option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option>
+    </select>
+    <div class="text-danger" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></div>
 </div>
 
 <div class="mb-3">
-<label class="form-label fw-bold">Status</label>
-<select class="form-select" th:field="*{status}">
-<option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
-</select>
+    <label class="form-label fw-bold">Status</label>
+    <select class="form-select" th:field="*{status}">
+        <option value="">-- Select Status --</option>
+        <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+    </select>
+    <div class="text-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
 </div>
 
 <div class="mb-3">
-<label class="form-label fw-bold">Description</label>
-<textarea class="form-control" rows="3" th:field="*{description}"></textarea>
+    <label class="form-label fw-bold">Description</label>
+    <textarea class="form-control" rows="3" th:field="*{description}"></textarea>
+    <div class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
 </div>
 
 <button type="submit" class="btn btn-primary">Save Assignment</button>
