@@ -39,6 +39,8 @@ public class Assignment {
     @Size(max = 300, message = "Description must be 300 characters or less.")
     private String description;
 
+    private String ownerUsername;
+
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
@@ -108,6 +110,14 @@ public class Assignment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
 
     public LocalDateTime getCreatedAt() {

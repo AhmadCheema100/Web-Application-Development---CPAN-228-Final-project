@@ -26,7 +26,13 @@ public class UserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        user.setRole("ROLE_USER");
+        if (user.getUsername().equalsIgnoreCase("admin")) {
+            user.setRole("ROLE_ADMIN");
+        } else if (user.getUsername().equalsIgnoreCase("teacher")) {
+            user.setRole("ROLE_TEACHER");
+        } else {
+            user.setRole("ROLE_STUDENT");
+        }
 
         userRepository.save(user);
     }

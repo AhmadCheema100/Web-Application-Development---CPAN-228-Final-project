@@ -7,40 +7,8 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="container mt-4">
-
-    <header class="mb-4">
-<nav class="nav nav-pills">
-
-    <a class="nav-link" th:href="@{/}">Home</a>
-    <a class="nav-link" th:href="@{/about}">About</a>
-    <a class="nav-link" th:href="@{/features}">Features</a>
-
-    <a class="nav-link"
-       sec:authorize="hasAnyRole('ADMIN','TEACHER')"
-       th:href="@{/assignments/new}">
-        Add Assignment
-    </a>
-
-    <a class="nav-link active"
-       sec:authorize="isAuthenticated()"
-       th:href="@{/assignments}">
-        View Assignments
-    </a>
-
-    <a class="nav-link"
-       sec:authorize="hasRole('STUDENT')"
-       th:href="@{/tasks/new}">
-        Create Task
-    </a>
-
-    <a class="nav-link"
-       sec:authorize="hasRole('STUDENT')"
-       th:href="@{/tasks}">
-        My Tasks
-    </a>
-
-</nav>
-    </header>
+    
+<div th:replace="navbar :: navbar"></div>
 
     <h1 class="mb-4">Saved Assignments</h1>
 
@@ -96,9 +64,15 @@
                         <span class="badge bg-secondary" th:text="${assignment.status}"></span>
                     </td>
                     <td th:text="${assignment.description}"></td>
-                </tr>
-                <tr th:if="${#lists.isEmpty(assignments)}">
-                    <td colspan="6" class="text-center text-muted py-3">No assignments found matching your criteria.</td>
+                    <td>
+                        <a class="btn btn-sm btn-outline-primary me-2"
+                        th:href="@{/assignments/edit/{id}(id=${assignment.id})}"
+                        sec:authorize="hasRole('ADMIN')">Edit</a>
+
+                        <a class="btn btn-sm btn-outline-danger"
+                        th:href="@{/assignments/delete/{id}(id=${assignment.id})}"
+                        sec:authorize="hasRole('ADMIN')">Delete</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

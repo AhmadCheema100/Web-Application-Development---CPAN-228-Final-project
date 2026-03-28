@@ -36,6 +36,7 @@ public class AuthController {
             return "register";
         }
 
+        user.setRole("ROLE_STUDENT"); // default role
         userService.registerUser(user);
 
         return "redirect:/login";
