@@ -1,0 +1,62 @@
+<div th:fragment="navbar"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <header class="mb-4">
+        <nav class="nav nav-pills d-flex align-items-center gap-2">
+
+            <a class="nav-link" th:href="@{/}">Home</a>
+            <a class="nav-link" th:href="@{/about}">About</a>
+            <a class="nav-link" th:href="@{/features}">Features</a>
+
+            <a class="nav-link"
+               sec:authorize="hasAnyRole('ADMIN','TEACHER')"
+               th:href="@{/assignments/new}">
+                Add Assignment
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="isAuthenticated()"
+               th:href="@{/assignments}">
+                View Assignments
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="hasAnyRole('ADMIN','STUDENT')"
+               th:href="@{/tasks/new}">
+                Create Task
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="hasAnyRole('ADMIN','STUDENT')"
+               th:href="@{/tasks}">
+                My Tasks
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="hasRole('ADMIN')"
+               th:href="@{/h2-console}">
+                H2 Console
+            </a>
+
+            <span class="ms-auto badge bg-dark" sec:authorize="hasRole('ADMIN')">
+                Logged in as: ADMIN
+            </span>
+
+            <span class="ms-auto badge bg-dark" sec:authorize="hasRole('TEACHER')">
+                Logged in as: TEACHER
+            </span>
+
+            <span class="ms-auto badge bg-dark" sec:authorize="hasRole('STUDENT')">
+                Logged in as: STUDENT
+            </span>
+
+            <a class="nav-link text-danger"
+               sec:authorize="isAuthenticated()"
+               th:href="@{/logout}">
+                Logout
+            </a>
+
+        </nav>
+    </header>
+</div>

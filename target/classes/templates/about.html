@@ -10,40 +10,8 @@
 </head>
 
 <body class="container mt-4">
-
-<header class="mb-4">
-    <nav class="nav nav-pills">
-
-    <a class="nav-link" th:href="@{/}">Home</a>
-    <a class="nav-link active" th:href="@{/about}">About</a>
-    <a class="nav-link" th:href="@{/features}">Features</a>
-
-    <a class="nav-link"
-       sec:authorize="hasAnyRole('ADMIN','TEACHER')"
-       th:href="@{/assignments/new}">
-        Add Assignment
-    </a>
-
-    <a class="nav-link"
-       sec:authorize="isAuthenticated()"
-       th:href="@{/assignments}">
-        View Assignments
-    </a>
-
-    <a class="nav-link"
-       sec:authorize="hasRole('STUDENT')"
-       th:href="@{/tasks/new}">
-        Create Task
-    </a>
-
-    <a class="nav-link"
-       sec:authorize="hasRole('STUDENT')"
-       th:href="@{/tasks}">
-        My Tasks
-    </a>
-
-</nav>
-</header>
+    
+<div th:replace="navbar :: navbar"></div>
 
 <div class="p-4 bg-light border rounded">
     <h1 class="mb-3">About BrainWave</h1>
