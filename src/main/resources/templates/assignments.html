@@ -73,6 +73,13 @@
                             <a class="btn btn-sm btn-outline-danger"
                                th:href="@{/assignments/delete/{id}(id=${assignment.id})}">Delete</a>
                         </div>
+                        <a class="btn btn-sm btn-outline-primary me-2"
+                        th:href="@{/assignments/edit/{id}(id=${assignment.id})}"
+                        th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">Edit</a>
+
+                        <a class="btn btn-sm btn-outline-danger"
+                        th:href="@{/assignments/delete/{id}(id=${assignment.id})}"
+                        th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">Delete</a>
                     </td>
                 </tr>
             </tbody>
