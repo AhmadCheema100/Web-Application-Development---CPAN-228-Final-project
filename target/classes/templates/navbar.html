@@ -9,7 +9,19 @@
             <a class="nav-link" th:href="@{/about}">About</a>
             <a class="nav-link" th:href="@{/features}">Features</a>
 
-            <a class="nav-link text-center"
+            <a class="nav-link"
+               sec:authorize="isAnonymous()"
+               th:href="@{/login}">
+                Login
+            </a>
+
+            <a class="nav-link"
+               sec:authorize="isAnonymous()"
+               th:href="@{/register}">
+                Register
+            </a>
+
+            <a class="nav-link"
                sec:authorize="hasAnyRole('ADMIN','TEACHER')"
                th:href="@{/assignments/new}">
                 Add Assignment
