@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Assignments | BrainWave</title>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="container mt-4">
-    
+
 <div th:replace="navbar :: navbar"></div>
 
     <h1 class="mb-4">Saved Assignments</h1>
@@ -50,6 +51,7 @@
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Description</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,13 +67,12 @@
                     </td>
                     <td th:text="${assignment.description}"></td>
                     <td>
-                        <a class="btn btn-sm btn-outline-primary me-2"
-                        th:href="@{/assignments/edit/{id}(id=${assignment.id})}"
-                        sec:authorize="hasRole('ADMIN')">Edit</a>
-
-                        <a class="btn btn-sm btn-outline-danger"
-                        th:href="@{/assignments/delete/{id}(id=${assignment.id})}"
-                        sec:authorize="hasRole('ADMIN')">Delete</a>
+                        <div th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">
+                            <a class="btn btn-sm btn-outline-primary me-2"
+                               th:href="@{/assignments/edit/{id}(id=${assignment.id})}">Edit</a>
+                            <a class="btn btn-sm btn-outline-danger"
+                               th:href="@{/assignments/delete/{id}(id=${assignment.id})}">Delete</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
