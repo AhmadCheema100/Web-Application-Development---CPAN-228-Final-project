@@ -8,7 +8,7 @@
 </head>
 <body class="container mt-4">
     
-<div th:replace="navbar :: navbar"></div>
+<div th:replace="~{navbar :: navbar}"></div>
 
     <h1 class="mb-4">Saved Assignments</h1>
 
@@ -67,11 +67,11 @@
                     <td>
                         <a class="btn btn-sm btn-outline-primary me-2"
                         th:href="@{/assignments/edit/{id}(id=${assignment.id})}"
-                        sec:authorize="hasRole('ADMIN')">Edit</a>
+                        th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">Edit</a>
 
                         <a class="btn btn-sm btn-outline-danger"
                         th:href="@{/assignments/delete/{id}(id=${assignment.id})}"
-                        sec:authorize="hasRole('ADMIN')">Delete</a>
+                        th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">Delete</a>
                     </td>
                 </tr>
             </tbody>
