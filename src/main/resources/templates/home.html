@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BrainWave | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body class="container mt-4">
+    
+<div th:replace="navbar :: navbar"></div>
+
+<div class="p-4 bg-light border rounded">
+    <h1 class="mb-3">BrainWave</h1>
+    <h2 class="mb-3">A Simpler Online Learning Experience</h2>
+
+    <p>
+        BrainWave is an online learning platform designed to make course navigation,
+        assignment tracking, and student progress easier to manage.
+    </p>
+
+    <p class="mb-0">
+        Our goal is to reduce the frustration students often experience with traditional
+        learning platforms by creating a cleaner and more intuitive system.
+    </p>
+</div>
+
+<div class="p-4 bg-light border rounded mt-4">
+    <h2 class="mb-3">What you can do</h2>
+    <ul class="list-group">
+        <li class="list-group-item">Track assignments clearly</li>
+        <li class="list-group-item">View course-related work in one place</li>
+        <li class="list-group-item">Manage progress with less confusion</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+com\brainwave\app\repository\UserRepository.class
+com\brainwave\app\repository\AssignmentRepository.class
+com\brainwave\app\BrainWaveApplication.class
+com\brainwave\app\model\Task.class
+com\brainwave\app\repository\TaskRepository.class
+com\brainwave\app\controller\PageController.class
+com\brainwave\app\controller\TaskController.class
+com\brainwave\app\model\User.class
+com\brainwave\app\controller\AuthController.class
+com\brainwave\app\security\CustomUserDetailsService.class
+com\brainwave\app\controller\AssignmentController.class
+com\brainwave\app\service\UserService.class
+com\brainwave\app\model\Priority.class
+com\brainwave\app\model\Assignment.class
+com\brainwave\app\model\Status.class
+com\brainwave\app\security\SecurityConfig.class

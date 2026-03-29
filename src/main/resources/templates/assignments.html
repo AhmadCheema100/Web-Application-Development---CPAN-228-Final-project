@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignments | BrainWave</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="container mt-4">
+
+<div th:replace="navbar :: navbar"></div>
+
+<h1 class="mb-4">Saved Assignments</h1>
+
+<form th:action="@{/assignments}" method="get" class="row g-3 mb-4 p-3 bg-light border rounded">
+    <div class="col-md-3">
+        <label for="status" class="form-label fw-bold">Status</label>
+        <select name="status" id="status" class="form-select">
+            <option value="">All Statuses</option>
+            <option th:each="stat : ${statuses}" th:value="${stat}" th:text="${stat}"></option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="priority" class="form-label fw-bold">Priority</label>
+        <select name="priority" id="priority" class="form-select">
+            <option value="">All Priorities</option>
+            <option th:each="prio : ${priorities}" th:value="${prio}" th:text="${prio}"></option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label for="sortBy" class="form-label fw-bold">Sort By</label>
+        <select name="sortBy" id="sortBy" class="form-select">
+            <option value="title">Title</option>
+            <option value="dueDate">Due Date</option>
+            <option value="courseName">Course</option>
+        </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Search</button>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover border">
+        <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Due Date</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="assignment : ${assignments}">
+                <td th:text="${assignment.title}"></td>
+                <td th:text="${assignment.courseName}"></td>
+                <td th:text="${assignment.dueDate}"></td>
+                <td>
+                    <span class="badge bg-info text-dark" th:text="${assignment.priority}"></span>
+                </td>
+                <td>
+                    <span class="badge bg-secondary" th:text="${assignment.status}"></span>
+                </td>
+                <td th:text="${assignment.description}"></td>
+                <td class="action-cell">
+                    <a class="btn btn-sm btn-outline-primary me-2"
+                       th:href="@{/assignments/edit/{id}(id=${assignment.id})}"
+                       th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">
+                        Edit
+                    </a>
+
+                    <a class="btn btn-sm btn-outline-danger"
+                       th:href="@{/assignments/delete/{id}(id=${assignment.id})}"
+                       th:if="${isAdmin or (isTeacher and assignment.ownerUsername == currentUsername)}">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(assignments)}">
+                <td colspan="7" class="text-center text-muted py-3">No assignments found.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

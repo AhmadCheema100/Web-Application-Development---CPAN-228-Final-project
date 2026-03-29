@@ -1,0 +1,63 @@
+body {
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+.app-nav {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.app-nav .nav-link {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.app-nav .nav-link:hover {
+    background: #e9eefc;
+}
+
+.auth-wrapper {
+    max-width: 520px;
+    margin: 40px auto 0;
+}
+
+.auth-card {
+    background: #ffffff;
+    border: 1px solid #dbe3f0;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.bg-light.border.rounded,
+.p-4.bg-light.border.rounded,
+form.row.g-3.mb-4.p-3.bg-light.border.rounded {
+    background: #ffffff !important;
+    border-color: #dbe3f0 !important;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+}
+
+.table {
+    background: #ffffff;
+}
+
+.table-responsive {
+    background: #ffffff;
+    border: 1px solid #dbe3f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+}
+
+.action-cell {
+    min-width: 150px;
+}
+
+.btn-primary {
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+}
