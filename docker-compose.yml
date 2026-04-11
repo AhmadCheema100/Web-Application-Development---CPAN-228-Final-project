@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: brainwave-mysql
+    environment:
+      MYSQL_DATABASE: brainwave_db
+      MYSQL_USER: brainwave_user
+      MYSQL_PASSWORD: brainwave_pass
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: brainwave-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:

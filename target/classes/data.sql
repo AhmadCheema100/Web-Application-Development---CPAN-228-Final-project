@@ -19,7 +19,7 @@ VALUES ('Project Deliverable 3: Final Project', 'CPAN 228', '2026-04-16', 'LOW',
 
 
 INSERT INTO task (title, description, due_date, owner_username, created_at)
-VALUES ('Read chapter 4', 'Summarize notes', CURRENT_DATE + 2, 'student', CURRENT_TIMESTAMP);
+VALUES ('Read chapter 4', 'Summarize notes', '2026-04-12', 'student', CURRENT_TIMESTAMP);
 
 INSERT INTO task (title, description, due_date, owner_username, created_at)
-VALUES ('Prepare demo', 'Test role features', CURRENT_DATE + 3, 'admin', CURRENT_TIMESTAMP);
+VALUES ('Prepare demo', 'Test role features', '2026-04-13', 'admin', CURRENT_TIMESTAMP);
